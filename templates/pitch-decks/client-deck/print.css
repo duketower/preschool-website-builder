@@ -1,0 +1,46 @@
+/* ============================================================
+   PRINT.CSS — Client Pitch Deck
+   Ensures clean A4 printing with correct page breaks.
+   ============================================================ */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .slide {
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-after: page;
+    width: 210mm;
+    min-height: 297mm;
+    overflow: hidden;
+    box-shadow: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .slide:last-child {
+    page-break-after: auto;
+  }
+
+  .slide-nav {
+    display: none !important;
+  }
+}

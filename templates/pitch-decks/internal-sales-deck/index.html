@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internal Sales Deck — Preschool Website Toolkit</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Print Styles -->
+  <link rel="stylesheet" href="print.css" />
+
+  <style>
+    /* =============================================
+       DESIGN TOKENS
+       ============================================= */
+    :root {
+      --primary:     #FF6B6B;
+      --secondary:   #4ECDC4;
+      --accent:      #FFE66D;
+      --bg:          #FFF9F0;
+      --text:        #2D3436;
+      --text-light:  #636E72;
+      --white:       #FFFFFF;
+      --border:      #E0E0E0;
+      --font-head:   'Poppins', sans-serif;
+      --font-body:   'Nunito', sans-serif;
+    }
+
+    /* =============================================
+       RESET & BASE
+       ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background: #f0f0f0;
+      color: var(--text);
+      padding-top: 56px; /* offset for fixed nav */
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-head);
+    }
+
+    /* =============================================
+       NAVIGATION BAR
+       ============================================= */
+    .slide-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: var(--white);
+      border-bottom: 2px solid var(--border);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .slide-nav button {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.4rem 1.1rem;
+      border-radius: 6px;
+      border: 2px solid var(--primary);
+      background: var(--white);
+      color: var(--primary);
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .slide-nav button:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .slide-nav button:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      background: var(--white);
+      color: var(--primary);
+    }
+
+    #nav-counter {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text);
+      min-width: 90px;
+      text-align: center;
+    }
+
+    /* =============================================
+       SLIDE BASE
+       ============================================= */
+    .slide {
+      max-width: 900px;
+      min-height: 640px;
+      margin: 2rem auto;
+      padding: 3rem;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* =============================================
+       SHARED COMPONENTS
+       ============================================= */
+    .slide-label {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .slide-title {
+      font-family: var(--font-head);
+      font-size: 1.85rem;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+
+    .slide-subtitle {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-bottom: 1.8rem;
+    }
+
+    .divider {
+      width: 60px;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--primary);
+      margin: 0.6rem 0 1.4rem;
+    }
+
+    /* =============================================
+       SLIDE 1 — COVER
+       ============================================= */
+    #slide-1 {
+      background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+      color: var(--white);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 3rem 2rem;
+    }
+
+    .cover-badge {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.8rem;
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 4px;
+      padding: 0.3rem 0.65rem;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .cover-icon {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      display: block;
+    }
+
+    #slide-1 h1 {
+      font-size: 2.6rem;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    #slide-1 h2 {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      max-width: 520px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .cover-divider {
+      width: 80px;
+      height: 3px;
+      background: rgba(255,255,255,0.55);
+      border-radius: 2px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .stat-pills {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .stat-pill {
+      background: rgba(255,255,255,0.22);
+      border: 1.5px solid rgba(255,255,255,0.45);
+      color: var(--white);
+      border-radius: 50px;
+      padding: 0.45rem 1.1rem;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .cover-footer {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.7);
+      margin-top: auto;
+    }
+
+    /* =============================================
+       SLIDE 2 — THE OPPORTUNITY
+       ============================================= */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      flex: 1;
+    }
+
+    .stat-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+    }
+
+    .stat-card {
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      border: 1.5px solid var(--border);
+    }
+
+    .stat-card .stat-num {
+      font-family: var(--font-head);
+      font-size: 1.7rem;
+      color: var(--primary);
+      display: block;
+      line-height: 1.1;
+    }
+
+    .stat-card .stat-lbl {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-top: 0.25rem;
+      line-height: 1.3;
+    }
+
+    .opp-text {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .insight-box {
+      background: #FFFBDD;
+      border: 1.5px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+      font-size: 0.83rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .slide-bottom-bar {
+      margin-top: 1.5rem;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 0.65rem 1.2rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* =============================================
+       SLIDE 3 — ICP
+       ============================================= */
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .profile-card {
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .profile-card .pc-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--secondary);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .profile-card h4 {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .profile-card p {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      line-height: 1.55;
+    }
+
+    .profile-card .warmup {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--secondary);
+      border-top: 1px solid var(--border);
+      padding-top: 0.5rem;
+      margin-top: auto;
+      line-height: 1.45;
+    }
+
+    .red-flags-box {
+      background: #FFF0F0;
+      border: 1.5px solid #FFCACA;
+      border-radius: 8px;
+      padding: 0.9rem 1.1rem;
+    }
+
+    .red-flags-box h4 {
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .red-flags-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .red-flags-box ul li {
+      font-size: 0.78rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* =============================================
+       SLIDE 4 — PAIN POINTS
+       ============================================= */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      flex: 1;
+    }
+
+    .pain-card {
+      border-left: 4px solid var(--primary);
+      background: var(--bg);
+      border-radius: 0 8px 8px 0;
+      padding: 0.9rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .pain-card h4 {
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .pain-card .pain-quote {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .pain-card .pain-answer {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-top: 0.2rem;
+    }
+
+    /* =============================================
+       SLIDE 5 — WHAT WE DELIVER
+       ============================================= */
+    .pages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .page-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+    }
+
+    .page-card .page-num {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      color: var(--primary);
+      min-width: 22px;
+      padding-top: 1px;
+    }
+
+    .page-card .page-info h4 {
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+
+    .page-card .page-info p {
+      font-size: 0.71rem;
+      color: var(--text-light);
+      line-height: 1.45;
+      margin-top: 0.15rem;
+    }
+
+    .features-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .feat-pill {
+      background: #E8F8F7;
+      color: var(--secondary);
+      border: 1.5px solid var(--secondary);
+      border-radius: 50px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.73rem;
+      font-weight: 700;
+    }
+
+    /* =============================================
+       SLIDE 6 — DEMO WALKTHROUGH
+       ============================================= */
+    .demo-note {
+      background: #E8F8F7;
+      border: 1.5px solid var(--secondary);
+      border-radius: 7px;
+      padding: 0.6rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 1.2rem;
+    }
+
+    .demo-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex: 1;
+    }
+
+    .demo-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .demo-step-num {
+      min-width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .demo-step-body h4 {
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+
+    .demo-step-body p {
+      font-size: 0.77rem;
+      color: var(--text-light);
+      line-height: 1.55;
+    }
+
+    .demo-step-body .step-time {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 0.15rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* =============================================
+       SLIDE 7 — WHY IT CONVERTS
+       ============================================= */
+    .convert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.9rem;
+      flex: 1;
+    }
+
+    .convert-card {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      border: 1.5px solid var(--border);
+    }
+
+    .convert-card .cc-icon {
+      font-size: 1.4rem;
+      min-width: 28px;
+      text-align: center;
+      padding-top: 2px;
+    }
+
+    .convert-card h4 {
+      font-size: 0.83rem;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .convert-card p {
+      font-size: 0.76rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* =============================================
+       SLIDE 8 — OBJECTION HANDLING
+       ============================================= */
+    .obj-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.9rem;
+      flex: 1;
+    }
+
+    .obj-card {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1.5px solid var(--border);
+    }
+
+    .obj-q {
+      background: #FFF0F0;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.78rem;
+      color: var(--primary);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.45;
+      border-bottom: 1.5px solid #FFCACA;
+    }
+
+    .obj-a {
+      background: #EBF9F8;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.75rem;
+      color: #2a6b66;
+      line-height: 1.55;
+    }
+
+    /* =============================================
+       SLIDE 9 — HOW TO CLOSE
+       ============================================= */
+    .close-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .close-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border);
+    }
+
+    .close-step-num {
+      min-width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--secondary);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .close-step-body h4 {
+      font-size: 0.84rem;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+
+    .close-step-body p {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    .bottom-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: auto;
+    }
+
+    /* Pricing Table */
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+    }
+
+    .pricing-table thead tr {
+      background: var(--secondary);
+      color: var(--white);
+    }
+
+    .pricing-table thead th {
+      padding: 0.5rem 0.7rem;
+      text-align: left;
+      font-weight: 700;
+    }
+
+    .pricing-table tbody tr:nth-child(even) {
+      background: #F0FAFA;
+    }
+
+    .pricing-table tbody td {
+      padding: 0.45rem 0.7rem;
+      color: var(--text);
+      line-height: 1.4;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pricing-note {
+      font-size: 0.68rem;
+      color: var(--text-light);
+      margin-top: 0.4rem;
+      font-style: italic;
+    }
+
+    .resources-box {
+      background: #FFFBDD;
+      border: 1.5px solid var(--accent);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .resources-box h4 {
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .resources-box .res-item {
+      font-size: 0.78rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      line-height: 1.45;
+    }
+
+    .resources-box .res-item code {
+      font-size: 0.72rem;
+      background: rgba(0,0,0,0.07);
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+
+    /* =============================================
+       SLIDE NUMBER BADGE (bottom-right each slide)
+       ============================================= */
+    .slide-num-badge {
+      position: absolute;
+      bottom: 1.1rem;
+      right: 1.5rem;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-light);
+      opacity: 0.55;
+    }
+
+    /* =============================================
+       UTILITY
+       ============================================= */
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================
+       NAVIGATION BAR
+       ================================================ -->
+  <nav class="slide-nav no-print" aria-label="Slide navigation">
+    <button id="btn-prev" onclick="navSlide(-1)" disabled>&#8592; Prev</button>
+    <span id="nav-counter">Slide 1 of 9</span>
+    <button id="btn-next" onclick="navSlide(1)">Next &#8594;</button>
+  </nav>
+
+  <!-- ================================================
+       SLIDE 1 — COVER
+       ================================================ -->
+  <section class="slide" id="slide-1">
+    <div class="cover-badge">Confidential — Internal Use Only</div>
+
+    <i class="fa-solid fa-seedling cover-icon"></i>
+    <h1>The Preschool Website Toolkit</h1>
+    <h2>Your Complete Pitch Guide for Indian Preschool Owners</h2>
+
+    <div class="cover-divider"></div>
+
+    <div class="stat-pills">
+      <span class="stat-pill"><i class="fa-solid fa-school" style="margin-right:0.4rem;"></i>1.8L+ Preschools in India</span>
+      <span class="stat-pill"><i class="fa-solid fa-globe" style="margin-right:0.4rem;"></i>&lt;5% Have Websites</span>
+      <span class="stat-pill"><i class="fa-solid fa-indian-rupee-sign" style="margin-right:0.4rem;"></i>&#8377;18K Cr Market</span>
+    </div>
+
+    <p class="cover-footer">Prepared for: [Sales Rep Name] &nbsp;|&nbsp; Version 1.0 &nbsp;|&nbsp; 2025</p>
+
+    <div class="slide-num-badge" style="color:rgba(255,255,255,0.45);">1 / 9</div>
+  </section>
+
+  <!-- ================================================
+       SLIDE 2 — THE OPPORTUNITY
+       ================================================ -->
+  <section class="slide" id="slide-2">
+    <div class="slide-label">Market Overview</div>
+    <h2 class="slide-title">Why Now? The Indian Preschool Opportunity</h2>
+    <p class="slide-subtitle">You are walking into an almost completely untapped digital market.</p>
+    <div class="divider"></div>
+
+    <div class="two-col" style="flex:1;">
+      <!-- Left: stat cards -->
+      <div>
+        <p class="section-label">The Numbers</p>
+        <div class="stat-cards-grid">
+          <div class="stat-card">
+            <span class="stat-num">1,80,000+</span>
+            <span class="stat-lbl">Preschools operating across India</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" style="color:var(--secondary);">&lt;5%</span>
+            <span class="stat-lbl">Have a professional website</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" style="color:#6C5CE7;">73%</span>
+            <span class="stat-lbl">Parents search online before visiting a school</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" style="color:#00B894;">4×</span>
+            <span class="stat-lbl">More enquiries for schools with websites vs without</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: text + insight -->
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <p class="section-label">The Landscape</p>
+        <p class="opp-text">
+          India's preschool sector is growing at 11% annually. Yet the overwhelming majority of schools
+          — especially those outside metro areas — have zero digital presence. Parents are searching.
+          Nobody is answering. You are about to change that.
+        </p>
+        <div class="insight-box">
+          <strong>&#128161; Insight:</strong> A first-time parent in Bengaluru searches
+          <em>"best preschool near me"</em> before contacting a single school. If your client isn't
+          on Google, they're invisible.
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-bottom-bar">
+      Your job: be the person who gets them online before a competitor does.
+    </div>
+
+    <div class="slide-num-badge">2 / 9</div>
+  </section>
+
+  <!-- ================================================
+       SLIDE 3 — IDEAL CUSTOMER PROFILE
+       ================================================ -->
+  <section class="slide" id="slide-3">
+    <div class="slide-label">Prospecting</div>
+    <h2 class="slide-title">Who You're Selling To</h2>
+    <p class="slide-subtitle">Know your prospect before you walk in.</p>
+    <div class="divider"></div>
+
+    <div class="three-col">
+      <!-- Card 1 -->
+      <div class="profile-card">
+        <div class="pc-icon" style="background:var(--primary);"><i class="fa-solid fa-user-tie"></i></div>
+        <h4>The Founder-Owner</h4>
+        <p style="font-size:0.7rem;font-weight:700;color:var(--text-light);">Most Common</p>
+        <p>Female, 35–55 years. Founded the school herself. Has 50–150 students. Runs everything — admissions, operations, teaching. Has a WhatsApp group for parents but no website. Proud of her school but feels it doesn't "look" established online.</p>
+        <div class="warmup">&#128172; <em>"Show her the Sunshine Sprouts demo and ask: 'Does this look like how you'd want your school to appear?'"</em></div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="profile-card">
+        <div class="pc-icon" style="background:#6C5CE7;"><i class="fa-solid fa-building"></i></div>
+        <h4>The Franchise Principal</h4>
+        <p>Operates a Kidzee, EuroKids, or Bachpan franchise. The parent brand has a website but they need a local page. Focused on local admissions and community trust. Budget is available but needs approval.</p>
+        <div class="warmup">&#128172; <em>"Lead with local SEO: 'Parents in your area don't find franchise pages — they find local school websites.'"</em></div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="profile-card">
+        <div class="pc-icon" style="background:#00B894;"><i class="fa-solid fa-chart-line"></i></div>
+        <h4>The Ambitious Expander</h4>
+        <p>Running 2–3 branches. Wants to look bigger and more professional online. Understands digital marketing. Already spending on pamphlets and banners. Ready to invest.</p>
+        <div class="warmup">&#128172; <em>"Lead with ROI: 'One new admission pays for the website. You have how many empty seats this term?'"</em></div>
+      </div>
+    </div>
+
+    <div class="red-flags-box">
+      <h4><i class="fa-solid fa-triangle-exclamation" style="margin-right:0.3rem;"></i>Red Flags to Watch &amp; How to Handle Them</h4>
+      <ul>
+        <li>&#10060; <strong>"We tried a website before and no one maintained it"</strong> &#8594; Needs done-for-you updates — that's exactly what we provide.</li>
+        <li>&#10060; <strong>"We're not tech-savvy"</strong> &#8594; Reassure: zero maintenance needed from them, ever.</li>
+        <li>&#10060; <strong>"We'll think about it"</strong> &#8594; Ask: <em>when does your admission season start?</em></li>
+      </ul>
+    </div>
+
+    <div class="slide-num-badge">3 / 9</div>
+  </section>
+
+  <!-- ================================================
+       SLIDE 4 — PAIN POINTS
+       ================================================ -->
+  <section class="slide" id="slide-4">
+    <div class="slide-label">Discovery</div>
+    <h2 class="slide-title">What They Feel (But Won't Always Say)</h2>
+    <p class="slide-subtitle">Listen for these signals. Each one is a door.</p>
+    <div class="divider"></div>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <h4><i class="fa-solid fa-eye-slash" style="color:var(--primary);margin-right:0.4rem;"></i>The Invisible School</h4>
+        <p class="pain-quote">"Parents come to us only through referrals. Other schools are coming up on Google — mine isn't."</p>
+        <p class="pain-answer">&#10145; Our answer: Local SEO built into every page.</p>
+      </div>
+
+      <div class="pain-card">
+        <h4><i class="fa-brands fa-whatsapp" style="color:var(--primary);margin-right:0.4rem;"></i>The WhatsApp Struggle</h4>
+        <p class="pain-quote">"I share everything on WhatsApp groups. Parents still don't know what we offer or what our fees are."</p>
+        <p class="pain-answer">&#10145; Our answer: 9-page website that answers every parent question automatically.</p>
+      </div>
+
+      <div class="pain-card">
+        <h4><i class="fa-solid fa-shield-halved" style="color:var(--primary);margin-right:0.4rem;"></i>The Trust Problem</h4>
+        <p class="pain-quote">"New parents visit us once and don't come back. I think they're not sure if we're professional enough."</p>
+        <p class="pain-answer">&#10145; Our answer: Teacher profiles, CCTV mention, gallery, testimonials — all on the website.</p>
+      </div>
+
+      <div class="pain-card">
+        <h4><i class="fa-solid fa-plane" style="color:var(--primary);margin-right:0.4rem;"></i>The NRI Grandparent</h4>
+        <p class="pain-quote">"The grandparents are in the US and Canada. They want to see the school before agreeing to enrol their grandchild here."</p>
+        <p class="pain-answer">&#10145; Our answer: Gallery + virtual tour-style pages that work across time zones.</p>
+      </div>
+
+      <div class="pain-card">
+        <h4><i class="fa-solid fa-inbox" style="color:var(--primary);margin-right:0.4rem;"></i>The Form Flood</h4>
+        <p class="pain-quote">"I get enquiries on 5 different platforms. It's chaos. I miss callbacks."</p>
+        <p class="pain-answer">&#10145; Our answer: One centralised enquiry form that consolidates all enquiries.</p>
+      </div>
+
+      <div class="pain-card">
+        <h4><i class="fa-solid fa-users" style="color:var(--primary);margin-right:0.4rem;"></i>The Competitor Fear</h4>
+        <p class="pain-quote">"That new school that opened nearby has a great-looking website. They're getting more enquiries than me now."</p>
+        <p class="pain-answer">&#10145; Our answer: You can have a better website than them by next week.</p>
+      </div>
+    </div>
+
+    <div class="slide-num-badge">4 / 9</div>
+  </section>
+
+  <!-- ================================================
+       SLIDE 5 — WHAT WE DELIVER
+       ================================================ -->
+  <section class="slide" id="slide-5">
+    <div class="slide-label">The Product</div>
+    <h2 class="slide-title">The Complete 9-Page Website Package</h2>
+    <p class="slide-subtitle">Everything a preschool needs to look professional and generate admissions online.</p>
+    <div class="divider"></div>
+
+    <div class="pages-grid">
+      <div class="page-card">
+        <span class="page-num">01</span>
+        <div class="page-info">
+          <h4>&#127968; Home</h4>
+          <p>Hero, trust bar, programmes overview, testimonials, gallery preview</p>
+        </div>
+      </div>
+      <div class="page-card">
+        <span class="page-num">02</span>
+        <div class="page-info">
+          <h4>&#127979; About</h4>
+          <p>School story, principal message, teacher profiles, awards</p>
+        </div>
+      </div>
+      <div class="page-card">
+        <span class="page-num">03</span>
+        <div class="page-info">
+          <h4>&#128218; Programmes</h4>
+          <p>Playgroup / Nursery / LKG / UKG pages with curriculum detail</p>
+        </div>
+      </div>
+      <div class="page-card">
+        <span class="page-num">04</span>
+        <div class="page-info">
+          <h4>&#128203; Admissions</h4>
+          <p>Step-by-step process, documents checklist, online enquiry form</p>
+        </div>
+      </div>
+      <div class="page-card">
+        <span class="page-num">05</span>
+        <div class="page-info">
+          <h4>&#127959; Facilities</h4>
+          <p>Safety, classrooms, outdoor play, hygiene features</p>
+        </div>
+      </div>
+      <div class="page-card">
+        <span class="page-num">06</span>
+        <div class="page-info">
+          <h4>&#128247; Gallery</h4>
+          <p>Filterable photo gallery with lightbox — Classrooms, Events, Sports Day</p>
+        </div>
+      </div>
+      <div class="page-card">
+        <span class="page-num">07</span>
+        <div class="page-info">
+          <h4>&#11088; Testimonials</h4>
+          <p>8+ parent reviews, star ratings, Google review call-to-action</p>
+        </div>
+      </div>
+      <div class="page-card">
+        <span class="page-num">08</span>
+        <div class="page-info">
+          <h4>&#128240; Blog</h4>
+          <p>Latest news, events, parenting tips that build ongoing parent trust</p>
+        </div>
+      </div>
+      <div class="page-card">
+        <span class="page-num">09</span>
+        <div class="page-info">
+          <h4>&#128205; Contact</h4>
+          <p>Address, map embed, phone, enquiry form with local SEO schema</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-bottom:0.55rem;">Every Package Includes</p>
+    <div class="features-row">
+      <span class="feat-pill">&#128241; Mobile-First</span>
+      <span class="feat-pill">&#128269; Local SEO</span>
+      <span class="feat-pill">&#128172; WhatsApp Button</span>
+      <span class="feat-pill">&#128221; Enquiry Forms</span>
+      <span class="feat-pill">&#128444; Photo Gallery</span>
+      <span class="feat-pill">&#9989; Accessibility</span>
+      <span class="feat-pill">&#9889; Fast Loading</span>
+      <span class="feat-pill">&#128274; Secure (HTTPS)</span>
+      <span class="feat-pill">&#127912; Custom Branding</span>
+    </div>
+
+    <div class="slide-num-badge">5 / 9</div>
+  </section>
+
+  <!-- ================================================
+       SLIDE 6 — LIVE DEMO WALKTHROUGH
+       ================================================ -->
+  <section class="slide" id="slide-6">
+    <div class="slide-label">Sales Technique</div>
+    <h2 class="slide-title">How to Run the Demo in Their Office</h2>
+    <p class="slide-subtitle">You have the Sunshine Sprouts demo site. Use it. <strong>Every. Single. Meeting.</strong></p>
+    <div class="divider"></div>
+
+    <div class="demo-note">
+      <i class="fa-solid fa-laptop" style="margin-right:0.5rem;"></i>
+      Open <code>demo-site/pages/index.html</code> on your laptop before walking in. Have it ready on the homepage, browser maximised.
+    </div>
+
+    <div class="demo-steps">
+      <div class="demo-step">
+        <div class="demo-step-num">1</div>
+        <div class="demo-step-body">
+          <p class="step-time">30 seconds</p>
+          <h4>Open on Your Laptop First</h4>
+          <p>Start with the homepage. Say: <em>"This is an example of a school we built — Sunshine Sprouts Preschool in Koramangala, Bengaluru."</em> Open it and let them see the hero image and trust bar animate in.</p>
+        </div>
+      </div>
+
+      <div class="demo-step">
+        <div class="demo-step-num">2</div>
+        <div class="demo-step-body">
+          <p class="step-time">60 seconds</p>
+          <h4>Show the Before / After Slider</h4>
+          <p>Scroll to the <em>"Why Your School Needs a Modern Website"</em> section. Slowly drag the slider left to right. Say: <em>"On the left is a typical old school website. On the right is what we build. Drag it yourself — see the difference?"</em> Hand them the laptop.</p>
+        </div>
+      </div>
+
+      <div class="demo-step">
+        <div class="demo-step-num">3</div>
+        <div class="demo-step-body">
+          <p class="step-time">30 seconds</p>
+          <h4>Show the Admissions Form</h4>
+          <p>Navigate to Admissions. Say: <em>"Every parent who visits fills this form. You get their name, child's age, and phone number automatically. No missed enquiries."</em></p>
+        </div>
+      </div>
+
+      <div class="demo-step">
+        <div class="demo-step-num">4</div>
+        <div class="demo-step-body">
+          <p class="step-time">30 seconds</p>
+          <h4>Show the Gallery</h4>
+          <p>Go to Gallery. Click the filter buttons. Say: <em>"Parents love browsing photos. Click on any photo."</em> Show the lightbox. Watch their face.</p>
+        </div>
+      </div>
+
+      <div class="demo-step">
+        <div class="demo-step-num">5</div>
+        <div class="demo-step-body">
+          <p class="step-time">45 seconds</p>
+          <h4>Flip to Mobile View</h4>
+          <p>Drag the browser window narrow or open on your phone. Say: <em>"This is exactly how it looks on a parent's phone. 70% of searches happen on mobile."</em></p>
+        </div>
+      </div>
+
+      <div class="demo-step">
+        <div class="demo-step-num">6</div>
+        <div class="demo-step-body">
+          <p class="step-time">10 seconds</p>
+          <h4>The Close Question</h4>
+          <p>Ask: <em>"Which page do you love most?"</em> Whatever they say, you are in the conversation.</p>
+        </div>
+      </div>
+
+      <div class="demo-step">
+        <div class="demo-step-num">7</div>
+        <div class="demo-step-body">
+          <p class="step-time">10 seconds</p>
+          <h4>Handle the Inevitable</h4>
+          <p>They'll say: <em>"It looks great but…"</em> Go to Slide 8.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-num-badge">6 / 9</div>
+  </section>
+
+  <!-- ================================================
+       SLIDE 7 — WHY IT CONVERTS
+       ================================================ -->
+  <section class="slide" id="slide-7">
+    <div class="slide-label">Product Deep Dive</div>
+    <h2 class="slide-title">7 Features That Turn Website Visitors Into Admissions</h2>
+    <p class="slide-subtitle">Every element is designed with one goal: get parents to enquire.</p>
+    <div class="divider"></div>
+
+    <div class="convert-grid">
+      <div class="convert-card">
+        <div class="cc-icon">&#128290;</div>
+        <div>
+          <h4>Animated Trust Bar</h4>
+          <p>500+ Happy Families. 12 Years. 98% Satisfaction. These numbers appear with a counting animation as the parent scrolls. Instant credibility on first visit.</p>
+        </div>
+      </div>
+
+      <div class="convert-card">
+        <div class="cc-icon">&#128241;</div>
+        <div>
+          <h4>WhatsApp Floating Button</h4>
+          <p>Fixed bottom-right on every page. One tap connects parents to the school on WhatsApp. The #1 preferred contact method for Indian parents.</p>
+        </div>
+      </div>
+
+      <div class="convert-card">
+        <div class="cc-icon">&#128221;</div>
+        <div>
+          <h4>8-Field Enquiry Form</h4>
+          <p>Captures: Parent name, child name, age, mobile, programme, how they heard about you. Every field qualifies the lead before you even call back.</p>
+        </div>
+      </div>
+
+      <div class="convert-card">
+        <div class="cc-icon">&#128444;</div>
+        <div>
+          <h4>Filterable Gallery</h4>
+          <p>Parents can view Classrooms, Outdoor Play, Events, and Sports Day photos separately. Proof is more powerful than promises.</p>
+        </div>
+      </div>
+
+      <div class="convert-card">
+        <div class="cc-icon">&#11088;</div>
+        <div>
+          <h4>Verified Testimonials</h4>
+          <p>8+ parent reviews with names, avatar initials, and star ratings displayed prominently. Social proof is the #1 trust driver for first-time parents.</p>
+        </div>
+      </div>
+
+      <div class="convert-card">
+        <div class="cc-icon">&#128269;</div>
+        <div>
+          <h4>Local Business Schema</h4>
+          <p>Every page includes hidden SEO code that tells Google exactly where the school is and what it offers. This is how the school appears in "preschool near me" searches.</p>
+        </div>
+      </div>
+
+      <!-- 7th card spans full width -->
+      <div class="convert-card" style="grid-column: span 2;">
+        <div class="cc-icon">&#128205;</div>
+        <div>
+          <h4>Contact + Map — Four Ways to Reach the School</h4>
+          <p>Phone number as a tap-to-call link. WhatsApp link. Full address. Google Maps embed. Four ways to reach the school — none require a parent to do any work. The fewer the steps, the more the enquiries.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-num-badge">7 / 9</div>
+  </section>
+
+  <!-- ================================================
+       SLIDE 8 — OBJECTION HANDLING
+       ================================================ -->
+  <section class="slide" id="slide-8">
+    <div class="slide-label">Objection Handling</div>
+    <h2 class="slide-title">The 6 Objections You Will Hear</h2>
+    <p class="slide-subtitle">Prepare these responses before every meeting. Say them out loud.</p>
+    <div class="divider"></div>
+
+    <div class="obj-grid">
+
+      <div class="obj-card">
+        <div class="obj-q">&#10077; "We already have a Facebook page." &#10078;</div>
+        <div class="obj-a"><strong>&#9989; Response:</strong> Facebook is great for updates, but parents can't find you on Google through Facebook. They can't fill a structured enquiry form. They can't see a professional gallery. Most importantly — parents trust websites more than Facebook pages. A website says you're established. A Facebook page says you're available.</div>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-q">&#10077; "Our school is already full. We don't need more admissions." &#10078;</div>
+        <div class="obj-a"><strong>&#9989; Response:</strong> That's perfect — it means your school is growing. A website protects that growth. When a seat opens, you'll have a waiting list of pre-qualified parents. And when you expand to a second branch, the website grows with you.</div>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-q">&#10077; "It's too expensive." &#10078;</div>
+        <div class="obj-a"><strong>&#9989; Response:</strong> Let me ask — what's your average annual fee per child? [They answer.] One new admission from the website pays for it entirely. The website then works for you 24/7 for the next 5 years. What's the cost of not having it?</div>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-q">&#10077; "We don't know how to update it." &#10078;</div>
+        <div class="obj-a"><strong>&#9989; Response:</strong> You don't need to. The website is built to work without any updates from you. When you want to add a photo or change your admission dates, you send us a message. We handle everything. Your only job is to answer the phone when enquiries come in.</div>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-q">&#10077; "Can we do this after admissions season?" &#10078;</div>
+        <div class="obj-a"><strong>&#9989; Response:</strong> Admissions season starts in November — right now is when parents are researching. Every week you wait is enquiries going to the school down the road that already has a website. The best time to start was six months ago. The second best time is today.</div>
+      </div>
+
+      <div class="obj-card">
+        <div class="obj-q">&#10077; "Let me discuss with my husband / partner." &#10078;</div>
+        <div class="obj-a"><strong>&#9989; Response:</strong> Of course. Can I send you the proposal today so you have everything ready for that conversation? I'll also include a link to the Sunshine Sprouts demo — your partner can see exactly what the website will look like on their phone.</div>
+      </div>
+
+    </div>
+
+    <div class="slide-num-badge">8 / 9</div>
+  </section>
+
+  <!-- ================================================
+       SLIDE 9 — HOW TO CLOSE
+       ================================================ -->
+  <section class="slide" id="slide-9">
+    <div class="slide-label">Closing the Deal</div>
+    <h2 class="slide-title">Your Next Steps After the Meeting</h2>
+    <p class="slide-subtitle">A closed deal in 5 steps. Keep this checklist visible.</p>
+    <div class="divider"></div>
+
+    <div class="close-steps">
+      <div class="close-step">
+        <div class="close-step-num">1</div>
+        <div class="close-step-body">
+          <h4>&#9989; Run the Demo <span style="font-weight:400;color:var(--text-light);font-size:0.75rem;">(in the meeting)</span></h4>
+          <p>Open Sunshine Sprouts demo. Let them drag the before/after slider. Ask: <em>"Which page would you want parents to see first?"</em></p>
+        </div>
+      </div>
+
+      <div class="close-step">
+        <div class="close-step-num">2</div>
+        <div class="close-step-body">
+          <h4>&#9989; Gather School Details <span style="font-weight:400;color:var(--text-light);font-size:0.75rem;">(in the meeting, 5 min)</span></h4>
+          <p>Collect: School name, address, phone, WhatsApp number, principal name, year established, number of students, key programmes, 10–15 photos (WhatsApp them to yourself).</p>
+        </div>
+      </div>
+
+      <div class="close-step">
+        <div class="close-step-num">3</div>
+        <div class="close-step-body">
+          <h4>&#9989; Send the Proposal <span style="font-weight:400;color:var(--text-light);font-size:0.75rem;">(within 24 hours)</span></h4>
+          <p>Use the proposal template. Include: demo link, package options, delivery timeline (7 working days), payment terms. Subject line: <em>"Your [School Name] Website — Ready to Go"</em></p>
+        </div>
+      </div>
+
+      <div class="close-step">
+        <div class="close-step-num">4</div>
+        <div class="close-step-body">
+          <h4>&#9989; Follow Up <span style="font-weight:400;color:var(--text-light);font-size:0.75rem;">(Day 3 if no response)</span></h4>
+          <p>WhatsApp: <em>"Hi [Name], checking in on the website proposal. Admissions season starts soon — I can have your website live in 7 days once we begin. Shall I block the slot?"</em></p>
+        </div>
+      </div>
+
+      <div class="close-step">
+        <div class="close-step-num">5</div>
+        <div class="close-step-body">
+          <h4>&#9989; Confirm &amp; Deliver</h4>
+          <p>Once payment received, start customisation. Deliver in 7 working days. Get a testimonial from them at launch.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-two-col">
+      <!-- Pricing table -->
+      <div>
+        <p class="section-label" style="margin-bottom:0.5rem;">Pricing Guide</p>
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Package</th>
+              <th>Pages</th>
+              <th>Features</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Starter</strong></td>
+              <td>5 pages</td>
+              <td>Mobile, Forms, WhatsApp</td>
+              <td style="color:var(--secondary);font-weight:700;">[YOUR PRICE]</td>
+            </tr>
+            <tr>
+              <td><strong>Standard</strong></td>
+              <td>9 pages</td>
+              <td>All features + Gallery + Blog</td>
+              <td style="color:var(--secondary);font-weight:700;">[YOUR PRICE]</td>
+            </tr>
+            <tr>
+              <td><strong>Premium</strong></td>
+              <td>9 pages + 1yr support</td>
+              <td>All + monthly updates</td>
+              <td style="color:var(--secondary);font-weight:700;">[YOUR PRICE]</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="pricing-note">Fill in your actual prices before printing.</p>
+      </div>
+
+      <!-- Resources box -->
+      <div class="resources-box">
+        <h4><i class="fa-solid fa-folder-open" style="color:var(--text-light);margin-right:0.4rem;"></i>Quick Resources</h4>
+        <div class="res-item">
+          <i class="fa-solid fa-laptop-code" style="color:var(--text-light);"></i>
+          <span>Demo Site: <code>demo-site/pages/index.html</code></span>
+        </div>
+        <div class="res-item">
+          <i class="fa-solid fa-file-lines" style="color:var(--text-light);"></i>
+          <span>Proposal Template: <code>[link]</code></span>
+        </div>
+        <div class="res-item">
+          <i class="fa-brands fa-whatsapp" style="color:var(--text-light);"></i>
+          <span>Team Lead WhatsApp: <code>[number]</code></span>
+        </div>
+        <div style="margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid rgba(0,0,0,0.08);font-size:0.7rem;color:var(--text-light);line-height:1.5;">
+          Delivery: <strong>7 working days</strong> from payment.<br/>
+          Revisions: <strong>2 rounds</strong> included.
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-num-badge">9 / 9</div>
+  </section>
+
+  <!-- ================================================
+       JAVASCRIPT — SLIDE NAVIGATION
+       ================================================ -->
+  <script>
+    (function () {
+      const TOTAL = 9;
+      let current = 1;
+
+      // Collect all slides in order
+      const slides = [];
+      for (let i = 1; i <= TOTAL; i++) {
+        const el = document.getElementById('slide-' + i);
+        if (el) {
+          el.setAttribute('data-slide', String(i));
+          slides.push(el);
+        }
+      }
+
+      const counter  = document.getElementById('nav-counter');
+      const btnPrev  = document.getElementById('btn-prev');
+      const btnNext  = document.getElementById('btn-next');
+
+      function updateNav() {
+        counter.textContent = 'Slide ' + current + ' of ' + TOTAL;
+        btnPrev.disabled = (current === 1);
+        btnNext.disabled = (current === TOTAL);
+      }
+
+      function scrollToSlide(n) {
+        const target = slides[n - 1];
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        current = n;
+        updateNav();
+      }
+
+      window.navSlide = function (dir) {
+        const next = current + dir;
+        if (next < 1 || next > TOTAL) return;
+        scrollToSlide(next);
+      };
+
+      // IntersectionObserver — update counter when a slide enters view
+      const observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              const n = parseInt(entry.target.getAttribute('data-slide'), 10);
+              if (n && n !== current) {
+                current = n;
+                updateNav();
+              }
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+
+      slides.forEach(function (slide) {
+        observer.observe(slide);
+      });
+
+      updateNav();
+    })();
+  </script>
+</body>
+</html>

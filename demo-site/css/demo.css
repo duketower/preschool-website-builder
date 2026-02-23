@@ -1,0 +1,135 @@
+/* ============================================================
+   DEMO.CSS — Sunshine Sprouts Preschool Demo Site
+   Loaded after template.css. Adds before/after slider styles
+   and any demo-specific overrides.
+   ============================================================ */
+
+/* Before/After Comparison Slider ----------------------------- */
+.ba-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.ba-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  padding: var(--space-1) var(--space-4);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ba-label-before {
+  background: #ffe5e5;
+  color: #c0392b;
+}
+
+.ba-label-after {
+  background: #e0faf8;
+  color: #1a9e95;
+}
+
+#baSlider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#baSlider > img:first-child {
+  width: 100%;
+  display: block;
+}
+
+#baBefore {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+}
+
+#baHandle {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background: var(--color-white);
+  z-index: 10;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.ba-handle-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background: var(--color-white);
+  border-radius: 50%;
+  border: 3px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  box-shadow: var(--shadow-md);
+}
+
+/* BA Feature Comparison List --------------------------------- */
+.ba-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.ba-feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+}
+
+.ba-feature.bad,
+.ba-feature-bad {
+  background: #fff0f0;
+  color: #c0392b;
+}
+
+.ba-feature.bad i,
+.ba-feature-bad i {
+  color: #e74c3c;
+  flex-shrink: 0;
+}
+
+.ba-feature.good,
+.ba-feature-good {
+  background: #f0fffe;
+  color: #1a9e95;
+}
+
+.ba-feature.good i,
+.ba-feature-good i {
+  color: var(--color-secondary);
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .ba-features {
+    grid-template-columns: 1fr;
+  }
+}

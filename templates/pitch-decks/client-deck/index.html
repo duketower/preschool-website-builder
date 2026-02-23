@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your School Deserves to Be Found — Website Pitch Deck</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Print Stylesheet -->
+  <link rel="stylesheet" href="print.css" media="print" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --primary:     #FF6B6B;
+      --secondary:   #4ECDC4;
+      --accent:      #FFE66D;
+      --bg:          #FFF9F0;
+      --text:        #2D3436;
+      --text-light:  #636E72;
+      --white:       #FFFFFF;
+      --border:      #E0E0E0;
+      --font-head:   'Poppins', sans-serif;
+      --font-body:   'Nunito', sans-serif;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background: #f0f0f0;
+      color: var(--text);
+      padding-top: 60px; /* room for nav */
+    }
+
+    h1, h2, h3, h4 { font-family: var(--font-head); }
+
+    /* ============================================================
+       NAVIGATION BAR
+    ============================================================ */
+    .slide-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: var(--white);
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      height: 56px;
+      padding: 0 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+
+    .slide-nav button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: .45rem 1.1rem;
+      font-family: var(--font-body);
+      font-size: .9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .slide-nav button:hover { background: #e05555; transform: translateY(-1px); }
+    .slide-nav button:disabled { background: #ccc; cursor: default; transform: none; }
+
+    .slide-counter {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--text-light);
+      min-width: 90px;
+      text-align: center;
+    }
+
+    /* ============================================================
+       SLIDE WRAPPER
+    ============================================================ */
+    .slide {
+      max-width: 900px;
+      min-height: 640px;
+      margin: 2rem auto;
+      padding: 3rem;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.10);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Slide number badge */
+    .slide-badge {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      background: rgba(0,0,0,.08);
+      color: rgba(0,0,0,.45);
+      font-family: var(--font-body);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      padding: .25rem .65rem;
+      border-radius: 20px;
+    }
+
+    /* ============================================================
+       SLIDE 1 — COVER
+    ============================================================ */
+    #slide-1 {
+      background: linear-gradient(135deg, #4ECDC4 0%, #FF6B6B 100%);
+      color: var(--white);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 1.5rem;
+      padding: 3.5rem 3rem;
+    }
+
+    #slide-1 .slide-badge { background: rgba(255,255,255,.2); color: rgba(255,255,255,.75); }
+
+    .cover-icon { font-size: 4rem; margin-bottom: .25rem; }
+
+    .cover-h1 {
+      font-size: 2.6rem;
+      line-height: 1.15;
+      font-weight: 800;
+      color: var(--white);
+      max-width: 600px;
+    }
+
+    .cover-subtitle {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.9);
+      max-width: 540px;
+      line-height: 1.6;
+    }
+
+    .cover-mockup {
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.25);
+      max-width: 500px;
+      width: 100%;
+      height: auto;
+    }
+
+    .cover-pill {
+      background: rgba(255,255,255,.22);
+      border: 1.5px solid rgba(255,255,255,.45);
+      color: var(--white);
+      font-size: .95rem;
+      font-weight: 700;
+      padding: .55rem 1.6rem;
+      border-radius: 40px;
+      letter-spacing: .02em;
+      margin-top: .5rem;
+    }
+
+    /* ============================================================
+       SHARED SLIDE HEADINGS
+    ============================================================ */
+    .slide-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: .4rem;
+    }
+
+    .slide-subtitle {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 1.8rem;
+      line-height: 1.5;
+    }
+
+    /* Accent underline for titles */
+    .slide-title-accent {
+      display: inline-block;
+      border-bottom: 4px solid var(--accent);
+      padding-bottom: 2px;
+    }
+
+    /* ============================================================
+       SLIDE 2 — PARENT JOURNEY
+    ============================================================ */
+    .journey-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .journey-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .step-number.n1 { background: var(--secondary); }
+    .step-number.n2 { background: var(--primary); }
+    .step-number.n3 { background: #6C5CE7; }
+
+    .step-icon { font-size: 1.4rem; margin-top: .1rem; color: var(--text-light); }
+
+    .step-body h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: .3rem;
+      color: var(--text);
+    }
+    .step-body p { font-size: .92rem; color: var(--text-light); line-height: 1.6; }
+
+    .big-question {
+      background: var(--accent);
+      border-radius: 12px;
+      padding: 1.3rem 1.6rem;
+      font-size: .97rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       SLIDE 3 — BEFORE / AFTER
+    ============================================================ */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      flex: 1;
+    }
+
+    .compare-col {
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+    }
+    .compare-col.bad  { background: #FFF0F0; border: 2px solid #FFCDD2; }
+    .compare-col.good { background: #E8FAF9; border: 2px solid #B2EBE9; }
+
+    .compare-col h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .compare-col ul { list-style: none; display: flex; flex-direction: column; gap: .65rem; }
+
+    .compare-col ul li {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       SLIDE 4 — WHAT YOU GET
+    ============================================================ */
+    .pages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      flex: 1;
+    }
+
+    .page-tile {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+    }
+
+    .page-tile .tile-num {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .page-tile h4 {
+      font-size: .95rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .page-tile p {
+      font-size: .82rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    .highlight-bar {
+      margin-top: 1.4rem;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      border-radius: 10px;
+      padding: .9rem 1.4rem;
+      color: var(--white);
+      font-weight: 800;
+      font-size: .97rem;
+      text-align: center;
+    }
+
+    /* ============================================================
+       SLIDE 5 — FEATURES
+    ============================================================ */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.1rem;
+      flex: 1;
+    }
+
+    .feature-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+    }
+
+    .feature-card .feat-icon {
+      font-size: 1.6rem;
+    }
+
+    .feature-card h4 {
+      font-size: .97rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .feature-card .feat-desc {
+      font-size: .84rem;
+      color: var(--text-light);
+      line-height: 1.55;
+    }
+
+    .feature-card .feat-quote {
+      font-size: .8rem;
+      font-style: italic;
+      color: var(--text-light);
+      background: var(--white);
+      border-left: 3px solid var(--border);
+      padding: .45rem .75rem;
+      border-radius: 0 6px 6px 0;
+      line-height: 1.55;
+      margin-top: .25rem;
+    }
+
+    /* ============================================================
+       SLIDE 6 — DEMO / STORY
+    ============================================================ */
+    .story-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      flex: 1;
+      align-items: start;
+    }
+
+    .story-images { display: flex; flex-direction: column; gap: 1rem; }
+
+    .story-img-wrap { display: flex; flex-direction: column; gap: .4rem; }
+
+    .story-img-wrap img {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid var(--border);
+    }
+
+    .img-label {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--text-light);
+      text-align: center;
+    }
+
+    .story-results h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: .3rem;
+    }
+
+    .story-meta {
+      font-size: .82rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .story-intro {
+      font-size: .88rem;
+      color: var(--text-light);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .result-list { list-style: none; display: flex; flex-direction: column; gap: .55rem; margin-bottom: 1.1rem; }
+
+    .result-list li {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .founder-quote {
+      background: var(--bg);
+      border-left: 4px solid var(--secondary);
+      padding: .85rem 1rem;
+      border-radius: 0 8px 8px 0;
+      font-size: .83rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .founder-quote cite {
+      display: block;
+      margin-top: .5rem;
+      font-style: normal;
+      font-weight: 700;
+      font-size: .8rem;
+      color: var(--text-light);
+    }
+
+    .demo-note {
+      background: var(--accent);
+      border-radius: 8px;
+      padding: .65rem 1rem;
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    /* ============================================================
+       SLIDE 7 — TESTIMONIALS
+    ============================================================ */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+      flex: 1;
+    }
+
+    .testimonial-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    .testi-header { display: flex; align-items: center; gap: .85rem; }
+
+    .testi-avatar {
+      width: 46px;
+      height: 46px;
+      min-width: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .testi-name { font-size: .9rem; font-weight: 800; color: var(--text); }
+    .testi-role { font-size: .78rem; color: var(--text-light); font-weight: 600; }
+
+    .testi-body {
+      font-size: .87rem;
+      color: var(--text);
+      line-height: 1.65;
+      position: relative;
+      padding-left: 1.1rem;
+    }
+
+    .testi-body::before {
+      content: '\201C';
+      position: absolute;
+      left: 0;
+      top: -.15rem;
+      font-size: 1.6rem;
+      color: var(--border);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    /* ============================================================
+       SLIDE 8 — PROCESS
+    ============================================================ */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      flex: 1;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .process-step-icon-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .process-icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      color: var(--white);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .process-connector {
+      width: 2px;
+      height: 28px;
+      background: var(--border);
+      margin: 0 auto;
+    }
+
+    .process-step:last-child .process-connector { display: none; }
+
+    .process-step-body { padding-top: .15rem; }
+
+    .process-step-body .step-day {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: .2rem;
+    }
+
+    .process-step-body h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: .3rem;
+    }
+
+    .process-step-body p {
+      font-size: .85rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .process-step-body .time-note {
+      display: inline-block;
+      margin-top: .45rem;
+      background: var(--accent);
+      color: var(--text);
+      font-size: .78rem;
+      font-weight: 700;
+      padding: .25rem .7rem;
+      border-radius: 20px;
+    }
+
+    .maintenance-note {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: .85rem 1.2rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-top: .5rem;
+    }
+
+    /* ============================================================
+       SLIDE 9 — CLOSING / CTA
+    ============================================================ */
+    #slide-9 {
+      background: linear-gradient(135deg, #4ECDC4 0%, #FF6B6B 100%);
+      color: var(--white);
+      align-items: center;
+      text-align: center;
+      gap: 0;
+      padding: 2.5rem 3rem;
+    }
+
+    #slide-9 .slide-badge { background: rgba(255,255,255,.2); color: rgba(255,255,255,.75); }
+
+    #slide-9 .slide-title,
+    #slide-9 .slide-subtitle { color: var(--white); }
+    #slide-9 .slide-subtitle { color: rgba(255,255,255,.85); margin-bottom: 1.4rem; }
+
+    .big-quote-box {
+      background: rgba(255,255,255,.18);
+      border: 1.5px solid rgba(255,255,255,.35);
+      border-radius: 12px;
+      padding: 1.1rem 1.8rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.65;
+      max-width: 640px;
+      margin: 0 auto 1.8rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      width: 100%;
+      margin-bottom: 1.6rem;
+    }
+
+    .price-box {
+      border-radius: 12px;
+      padding: 1.2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      position: relative;
+    }
+
+    .price-box.starter  { background: rgba(255,255,255,.92); color: var(--text); }
+    .price-box.standard { background: var(--primary); color: var(--white); }
+    .price-box.premium  { background: rgba(0,0,0,.35); color: var(--white); }
+
+    .price-box .price-tier {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .price-box .price-pages {
+      font-size: 1.6rem;
+      font-weight: 800;
+      font-family: var(--font-head);
+      line-height: 1.1;
+    }
+
+    .price-box .price-includes {
+      font-size: .78rem;
+      font-weight: 600;
+      line-height: 1.55;
+      opacity: .85;
+    }
+
+    .price-box .price-tagline {
+      font-size: .8rem;
+      font-weight: 700;
+      opacity: .75;
+      font-style: italic;
+    }
+
+    .price-box .price-amount {
+      font-family: var(--font-head);
+      font-size: .95rem;
+      font-weight: 800;
+      margin-top: .4rem;
+      padding: .35rem .7rem;
+      border-radius: 20px;
+      background: rgba(0,0,0,.12);
+      display: inline-block;
+    }
+
+    .price-box.starter .price-amount { background: rgba(0,0,0,.07); color: var(--text); }
+
+    .popular-badge {
+      position: absolute;
+      top: -.7rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: var(--text);
+      font-size: .72rem;
+      font-weight: 800;
+      padding: .2rem .75rem;
+      border-radius: 20px;
+      white-space: nowrap;
+      letter-spacing: .04em;
+    }
+
+    .next-steps-box {
+      background: var(--accent);
+      border-radius: 12px;
+      padding: 1.1rem 1.6rem;
+      color: var(--text);
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto 1.4rem;
+      text-align: left;
+    }
+
+    .next-steps-box h4 {
+      font-size: .95rem;
+      font-weight: 800;
+      margin-bottom: .7rem;
+    }
+
+    .next-steps-box ol {
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+
+    .next-steps-box ol li {
+      font-size: .87rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .85rem 1.8rem;
+      border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+
+    .cta-btn.call { background: var(--white); color: var(--primary); }
+    .cta-btn.wa   { background: #25D366; color: var(--white); }
+
+    .deck-footer {
+      font-size: .78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.65);
+      line-height: 1.6;
+    }
+
+    .deck-footer .replace-note {
+      display: block;
+      margin-top: .3rem;
+      font-size: .72rem;
+      color: rgba(255,255,255,.45);
+      font-style: italic;
+    }
+
+    /* ============================================================
+       RESPONSIVE TWEAKS
+    ============================================================ */
+    @media (max-width: 700px) {
+      body { padding-top: 56px; }
+      .slide { padding: 2rem 1.4rem; margin: 1rem auto; }
+      .cover-h1 { font-size: 1.8rem; }
+      .comparison-grid,
+      .story-layout,
+      .testimonials-grid,
+      .pricing-grid,
+      .features-grid { grid-template-columns: 1fr; }
+      .pages-grid { grid-template-columns: 1fr 1fr; }
+      .slide-title { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav class="slide-nav no-print" role="navigation" aria-label="Slide navigation">
+    <button id="btn-prev" aria-label="Previous slide" disabled>&#8592; Prev</button>
+    <span class="slide-counter" id="slide-counter" aria-live="polite">Slide 1 of 9</span>
+    <button id="btn-next" aria-label="Next slide">Next &#8594;</button>
+  </nav>
+
+  <!-- ============================================================
+       SLIDE 1 — COVER
+  ============================================================ -->
+  <section class="slide" id="slide-1" data-slide="1" aria-label="Cover slide">
+    <span class="slide-badge">1 / 9</span>
+
+    <i class="fa-solid fa-seedling cover-icon" aria-hidden="true"></i>
+
+    <h1 class="cover-h1">Your School Deserves to Be Found</h1>
+
+    <p class="cover-subtitle">
+      A professional website for your preschool — built in 7 days,<br />
+      designed to bring parents to your door
+    </p>
+
+    <img
+      src="https://placehold.co/500x280/FFFFFF/4ECDC4?text=Your+School%27s+Website"
+      alt="Preview of a professional preschool website"
+      class="cover-mockup"
+    />
+
+    <p class="cover-pill">Prepared specially for <strong>[SCHOOL NAME]</strong></p>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 2 — THE QUESTION EVERY PARENT ASKS
+  ============================================================ -->
+  <section class="slide" id="slide-2" data-slide="2" aria-label="How parents find schools">
+    <span class="slide-badge">2 / 9</span>
+
+    <h2 class="slide-title">
+      <span class="slide-title-accent">Before a Parent Calls You, They Search for You</span>
+    </h2>
+    <p class="slide-subtitle">Here's what happens when a parent looks for a preschool near them.</p>
+
+    <div class="journey-steps">
+
+      <div class="journey-step">
+        <div class="step-number n1">1</div>
+        <div>
+          <i class="fa-solid fa-magnifying-glass step-icon" aria-hidden="true" style="color: var(--secondary); font-size:1.2rem; margin-bottom:.4rem; display:block;"></i>
+          <div class="step-body">
+            <h3>They Open Google</h3>
+            <p>A parent in your area types: <strong>"best preschool near me"</strong> or <strong>"preschool in [your area]"</strong>. Google shows them a list of schools — with websites, photos, and reviews right there on the screen.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="journey-step">
+        <div class="step-number n2">2</div>
+        <div>
+          <i class="fa-solid fa-computer-mouse step-icon" aria-hidden="true" style="color: var(--primary); font-size:1.2rem; margin-bottom:.4rem; display:block;"></i>
+          <div class="step-body">
+            <h3>They Click on Websites</h3>
+            <p>They click on schools that have websites. They browse photos, read about the teachers, check the address and timings, and look for an enquiry form. They spend several minutes on each website before forming an opinion.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="journey-step">
+        <div class="step-number n3">3</div>
+        <div>
+          <i class="fa-solid fa-phone step-icon" aria-hidden="true" style="color:#6C5CE7; font-size:1.2rem; margin-bottom:.4rem; display:block;"></i>
+          <div class="step-body">
+            <h3>They Call the Schools They Trust</h3>
+            <p>Only then do they call — the schools that looked professional and already answered their questions online. <strong>Schools without websites are never discovered.</strong> They never even get a chance to make a first impression.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="big-question">
+      ❓ When a parent searches for a preschool in your area right now — does your school appear? If the answer is no, you are invisible to the parents who are actively looking for you.
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 3 — THE BEFORE
+  ============================================================ -->
+  <section class="slide" id="slide-3" data-slide="3" aria-label="Before and after comparison">
+    <span class="slide-badge">3 / 9</span>
+
+    <h2 class="slide-title">
+      <span class="slide-title-accent">What Parents See When Your School Has No Website</span>
+    </h2>
+    <p class="slide-subtitle">First impressions matter — especially online.</p>
+
+    <div class="comparison-grid">
+
+      <div class="compare-col bad">
+        <h3>&#10060; Without a Website</h3>
+        <ul>
+          <li>❌ Parents can't find you on Google</li>
+          <li>❌ No place to see your photos, teachers, or facilities</li>
+          <li>❌ Parents don't know your fees, programs, or timings</li>
+          <li>❌ Enquiries depend only on word-of-mouth</li>
+          <li>❌ You look less established than schools that have websites</li>
+          <li>❌ Working parents can't browse your school at 10 PM</li>
+          <li>❌ NRI grandparents can't see the school before agreeing to enrol</li>
+        </ul>
+      </div>
+
+      <div class="compare-col good">
+        <h3>&#9989; With Your New Website</h3>
+        <ul>
+          <li>✅ Parents find you when they search on Google</li>
+          <li>✅ Beautiful gallery of your school for parents to browse</li>
+          <li>✅ All information available 24/7 — no missed enquiries</li>
+          <li>✅ Online enquiry form collects parent details automatically</li>
+          <li>✅ You look as professional as the best schools in the city</li>
+          <li>✅ Working parents can research at midnight — and enquire</li>
+          <li>✅ Grandparents abroad can tour your school from their phone</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 4 — WHAT YOU GET
+  ============================================================ -->
+  <section class="slide" id="slide-4" data-slide="4" aria-label="What you get — 9 pages">
+    <span class="slide-badge">4 / 9</span>
+
+    <h2 class="slide-title">
+      <span class="slide-title-accent">Your Complete 9-Page School Website</span>
+    </h2>
+    <p class="slide-subtitle">Every page your parents need. Every feature that builds trust.</p>
+
+    <div class="pages-grid">
+
+      <div class="page-tile">
+        <span class="tile-num">🏠</span>
+        <h4>Home Page</h4>
+        <p>Your school's first impression. Hero image, key highlights, and an enquiry button.</p>
+      </div>
+
+      <div class="page-tile">
+        <span class="tile-num">🏫</span>
+        <h4>About Us</h4>
+        <p>Your story, your values, your Principal's message, and your teachers.</p>
+      </div>
+
+      <div class="page-tile">
+        <span class="tile-num">📚</span>
+        <h4>Programs</h4>
+        <p>Detailed information about Playgroup, Nursery, LKG, and UKG.</p>
+      </div>
+
+      <div class="page-tile">
+        <span class="tile-num">📋</span>
+        <h4>Admissions</h4>
+        <p>Step-by-step process, documents needed, and an online enquiry form.</p>
+      </div>
+
+      <div class="page-tile">
+        <span class="tile-num">🏗️</span>
+        <h4>Facilities</h4>
+        <p>Show off your CCTV, classrooms, play area, and hygiene measures.</p>
+      </div>
+
+      <div class="page-tile">
+        <span class="tile-num">📷</span>
+        <h4>Gallery</h4>
+        <p>A beautiful, filterable photo gallery. Click any photo to enlarge.</p>
+      </div>
+
+      <div class="page-tile">
+        <span class="tile-num">⭐</span>
+        <h4>Testimonials</h4>
+        <p>Parent reviews and star ratings — the most powerful trust signal.</p>
+      </div>
+
+      <div class="page-tile">
+        <span class="tile-num">📰</span>
+        <h4>Blog &amp; News</h4>
+        <p>Share events, activities, and school updates with parents.</p>
+      </div>
+
+      <div class="page-tile">
+        <span class="tile-num">📍</span>
+        <h4>Contact</h4>
+        <p>Address, map, phone, WhatsApp, and enquiry form — all in one place.</p>
+      </div>
+
+    </div>
+
+    <div class="highlight-bar">
+      All 9 pages &nbsp;·&nbsp; Mobile-friendly &nbsp;·&nbsp; Fast &nbsp;·&nbsp; Secure &nbsp;·&nbsp; Built in 7 days
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 5 — THE FEATURES PARENTS LOVE
+  ============================================================ -->
+  <section class="slide" id="slide-5" data-slide="5" aria-label="Features parents love">
+    <span class="slide-badge">5 / 9</span>
+
+    <h2 class="slide-title">
+      <span class="slide-title-accent">Features That Make Parents Trust Your School Before They Even Visit</span>
+    </h2>
+    <p class="slide-subtitle">Every feature is designed with Indian preschool parents in mind.</p>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <i class="fa-brands fa-whatsapp feat-icon" style="color: #25D366;" aria-hidden="true"></i>
+        <h4>WhatsApp Button</h4>
+        <p class="feat-desc">A floating WhatsApp button on every page. One tap — parents are in a conversation with you instantly, from any device.</p>
+        <div class="feat-quote">"I messaged at 9 PM and they replied within minutes. That's when I knew this school was responsive." — Typical parent review</div>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-file-lines feat-icon" style="color: var(--primary);" aria-hidden="true"></i>
+        <h4>Online Enquiry Form</h4>
+        <p class="feat-desc">A simple form that captures the parent's name, child's age, preferred programme, and contact number — automatically delivered to your phone.</p>
+        <div class="feat-quote">"I filled the form during my lunch break and got a callback the same afternoon."</div>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-images feat-icon" style="color: var(--secondary);" aria-hidden="true"></i>
+        <h4>Photo Gallery</h4>
+        <p class="feat-desc">A filterable gallery organised by: Classrooms, Outdoor Play, Art &amp; Craft, Events, and Sports Day. Parents spend the most time here.</p>
+        <div class="feat-quote">"I browsed the gallery for 20 minutes before deciding. The cleanliness and the happy children convinced me."</div>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-star feat-icon" style="color: var(--accent);" aria-hidden="true"></i>
+        <h4>Parent Testimonials</h4>
+        <p class="feat-desc">Real parent reviews displayed with names, star ratings, and the programme their child was enrolled in. Authentic and persuasive.</p>
+        <div class="feat-quote">"I read all the parent reviews before visiting. It felt like asking 8 different parents at once."</div>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-map-location-dot feat-icon" style="color: var(--secondary);" aria-hidden="true"></i>
+        <h4>Google Maps Integration</h4>
+        <p class="feat-desc">Your location embedded as an interactive map. Parents can get turn-by-turn directions to your school with a single tap.</p>
+        <div class="feat-quote">"I found the school on the website map and navigated directly. I didn't have to call to ask for directions."</div>
+      </div>
+
+      <div class="feature-card">
+        <i class="fa-solid fa-mobile-screen feat-icon" style="color: #6C5CE7;" aria-hidden="true"></i>
+        <h4>Mobile-First Design</h4>
+        <p class="feat-desc">Designed to look perfect on every mobile phone. Over 70% of parents browse on their phone — your website will impress them every time.</p>
+        <div class="feat-quote">"I showed my husband the website on my phone while we were at dinner. We decided to visit the next day."</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 6 — DEMO / THE SUNSHINE SPROUTS STORY
+  ============================================================ -->
+  <section class="slide" id="slide-6" data-slide="6" aria-label="Demo — Sunshine Sprouts story">
+    <span class="slide-badge">6 / 9</span>
+
+    <h2 class="slide-title">
+      <span class="slide-title-accent">See It in Action — Sunshine Sprouts Preschool</span>
+    </h2>
+    <p class="slide-subtitle">We built this website for a preschool just like yours. Here's what they got.</p>
+
+    <div class="demo-note">
+      <i class="fa-solid fa-circle-play" aria-hidden="true"></i>&nbsp; Ask your representative to show you the live demo website.
+    </div>
+
+    <div class="story-layout">
+
+      <div class="story-images">
+        <div class="story-img-wrap">
+          <img
+            src="https://placehold.co/380x180/b0b0b0/FFFFFF?text=Before+%E2%80%94+No+Website"
+            alt="Before — no website"
+          />
+          <span class="img-label">Before: No website. Only word-of-mouth.</span>
+        </div>
+        <div class="story-img-wrap">
+          <img
+            src="https://placehold.co/380x180/4ECDC4/FFFFFF?text=After+%E2%80%94+Sunshine+Sprouts+Website"
+            alt="After — Sunshine Sprouts professional website"
+          />
+          <span class="img-label">After: Sunshine Sprouts Preschool, Koramangala</span>
+        </div>
+      </div>
+
+      <div class="story-results">
+        <h3>Sunshine Sprouts Preschool</h3>
+        <p class="story-meta">Koramangala, Bengaluru &nbsp;|&nbsp; Founded 2012 &nbsp;|&nbsp; 500+ families served</p>
+        <p class="story-intro">
+          Founded by Mrs. Kavitha Rajan, Sunshine Sprouts had built its reputation entirely through word-of-mouth over 12 years. When we built their website, they got:
+        </p>
+        <ul class="result-list">
+          <li>📱 A mobile-ready, 9-page professional website live in 7 days</li>
+          <li>🔍 Showing up on Google for "preschool in Koramangala" searches</li>
+          <li>📝 An admissions form that collects parent details 24/7</li>
+          <li>⭐ A platform to display their 180+ Google reviews</li>
+        </ul>
+        <blockquote class="founder-quote">
+          "The website made our school look exactly as professional as it is. Parents now come prepared — they've already seen our classrooms, read our testimonials, and made up their mind before the visit."
+          <cite>— Mrs. Kavitha Rajan, Founder &amp; Principal</cite>
+        </blockquote>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 7 — WHAT PARENTS THINK
+  ============================================================ -->
+  <section class="slide" id="slide-7" data-slide="7" aria-label="Parent perspectives">
+    <span class="slide-badge">7 / 9</span>
+
+    <h2 class="slide-title">
+      <span class="slide-title-accent">What Parents Say About Schools With a Professional Website</span>
+    </h2>
+    <p class="slide-subtitle">These are real patterns from how Indian parents make preschool decisions.</p>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <div class="testi-header">
+          <div class="testi-avatar" style="background: var(--primary);">P</div>
+          <div>
+            <div class="testi-name">Priya S.</div>
+            <div class="testi-role">IT professional, Bengaluru</div>
+          </div>
+        </div>
+        <p class="testi-body">
+          Before visiting any school, I go through their website thoroughly. I look at the gallery, read about the teachers, check if they have CCTV and hygiene information. If a school doesn't have a website, I assume they aren't serious about their image.
+        </p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testi-header">
+          <div class="testi-avatar" style="background: var(--secondary);">R</div>
+          <div>
+            <div class="testi-name">Rajesh K.</div>
+            <div class="testi-role">Business owner, Hyderabad</div>
+          </div>
+        </div>
+        <p class="testi-body">
+          My wife and I shortlisted three schools from Google. We called only the ones with websites. The other two came as referrals, but we couldn't verify anything about them. We enrolled our daughter in one of the schools we found online.
+        </p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testi-header">
+          <div class="testi-avatar" style="background: var(--accent); color: var(--text);">A</div>
+          <div>
+            <div class="testi-name">Anitha M.</div>
+            <div class="testi-role">Working mother, Chennai</div>
+          </div>
+        </div>
+        <p class="testi-body">
+          I do all my research at night after my son goes to bed. That means I'm browsing schools at 10 or 11 PM. Schools with websites got my attention. I had made my decisions before the weekend visits had even begun.
+        </p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testi-header">
+          <div class="testi-avatar" style="background: #6C5CE7;">V</div>
+          <div>
+            <div class="testi-name">Vikram P.</div>
+            <div class="testi-role">NRI parent, Dubai</div>
+          </div>
+        </div>
+        <p class="testi-body">
+          My mother was selecting a preschool for our daughter while we were in Dubai. The only way we could be part of the decision was through the school's website. We wanted to see photos, read about the curriculum, and understand the safety measures. A website was non-negotiable for us.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 8 — THE PROCESS
+  ============================================================ -->
+  <section class="slide" id="slide-8" data-slide="8" aria-label="How we build your website">
+    <span class="slide-badge">8 / 9</span>
+
+    <h2 class="slide-title">
+      <span class="slide-title-accent">How We Build Your Website — In Just 7 Working Days</span>
+    </h2>
+    <p class="slide-subtitle">You share your school's details. We do the rest.</p>
+
+    <div class="process-steps">
+
+      <div class="process-step">
+        <div class="process-step-icon-wrap">
+          <div class="process-icon-circle" style="background: var(--secondary);">
+            <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+          </div>
+          <div class="process-connector"></div>
+        </div>
+        <div class="process-step-body">
+          <span class="step-day">Day 1</span>
+          <h3>You Share Your School Details</h3>
+          <p>Tell us your school name, address, programmes, timings, and fee structure. Share 15–20 photos of your school via WhatsApp. We handle the rest from here.</p>
+          <span class="time-note">Time needed from you: 30 minutes</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-step-icon-wrap">
+          <div class="process-icon-circle" style="background: var(--primary);">
+            <i class="fa-solid fa-computer" aria-hidden="true"></i>
+          </div>
+          <div class="process-connector"></div>
+        </div>
+        <div class="process-step-body">
+          <span class="step-day">Day 2 – 3</span>
+          <h3>We Build Your 9 Pages</h3>
+          <p>Our team builds all 9 pages of your website with your school's content, photos, colours, and branding. Every page is mobile-optimised and ready for Google.</p>
+          <span class="time-note">Time needed from you: Zero</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-step-icon-wrap">
+          <div class="process-icon-circle" style="background: #6C5CE7;">
+            <i class="fa-solid fa-eye" aria-hidden="true"></i>
+          </div>
+          <div class="process-connector"></div>
+        </div>
+        <div class="process-step-body">
+          <span class="step-day">Day 4 – 5</span>
+          <h3>You Review &amp; Approve</h3>
+          <p>We share a private preview link. You browse your new website on your phone and tell us what to change. We make all edits — as many as needed — until you're delighted.</p>
+          <span class="time-note">Time needed from you: 1 hour of browsing and feedback</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-step-icon-wrap">
+          <div class="process-icon-circle" style="background: #00B894;">
+            <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>
+          </div>
+          <div class="process-connector"></div>
+        </div>
+        <div class="process-step-body">
+          <span class="step-day">Day 6</span>
+          <h3>We Configure Search &amp; Forms</h3>
+          <p>We add your school to Google's local listings, configure the enquiry form to deliver leads directly to your mobile number, and activate the WhatsApp button.</p>
+          <span class="time-note">Time needed from you: Zero</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-step-icon-wrap">
+          <div class="process-icon-circle" style="background: var(--accent); color: var(--text);">
+            <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+          </div>
+          <div class="process-connector"></div>
+        </div>
+        <div class="process-step-body">
+          <span class="step-day">Day 7</span>
+          <h3>Launch Day 🎉</h3>
+          <p>Your website goes live. We send you the link. You share it with parents, add it to your WhatsApp groups, and watch the enquiries come in.</p>
+          <span class="time-note">Time needed from you: Share the link with pride!</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="maintenance-note">
+      <strong>Ongoing Maintenance:</strong> You never need to touch the technical side. Send us updates on WhatsApp and we update your website within 24 hours.
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SLIDE 9 — LET'S BEGIN / CLOSING CTA
+  ============================================================ -->
+  <section class="slide" id="slide-9" data-slide="9" aria-label="Get started">
+    <span class="slide-badge">9 / 9</span>
+
+    <h2 class="slide-title">Your School's Website is 7 Days Away</h2>
+    <p class="slide-subtitle">Admissions season is close. Let's make sure parents find you first.</p>
+
+    <div class="big-quote-box">
+      "Every day without a website is a day parents are finding your competitors instead of you."
+    </div>
+
+    <div class="pricing-grid">
+
+      <div class="price-box starter">
+        <span class="price-tier">Starter</span>
+        <span class="price-pages">5 Pages</span>
+        <span class="price-includes">Home, About, Programs,<br />Admissions, Contact</span>
+        <span class="price-tagline">Perfect for getting online fast</span>
+        <span class="price-amount">Contact for Pricing</span>
+      </div>
+
+      <div class="price-box standard">
+        <span class="popular-badge">&#9733; Most Popular</span>
+        <span class="price-tier">Standard</span>
+        <span class="price-pages">9 Pages</span>
+        <span class="price-includes">All 9 pages + Gallery<br />+ Blog + Testimonials</span>
+        <span class="price-tagline">Everything a growing preschool needs</span>
+        <span class="price-amount">Contact for Pricing</span>
+      </div>
+
+      <div class="price-box premium">
+        <span class="price-tier">Premium</span>
+        <span class="price-pages">9 Pages +</span>
+        <span class="price-includes">Full website + Monthly updates<br />+ Google listing management</span>
+        <span class="price-tagline">For ambitious schools that want to dominate local search</span>
+        <span class="price-amount">Contact for Pricing</span>
+      </div>
+
+    </div>
+
+    <div class="next-steps-box">
+      <h4>&#9989; What happens next:</h4>
+      <ol>
+        <li>Share your school details with us — takes just 30 minutes</li>
+        <li>We send you a preview website in 5 days</li>
+        <li>You approve. We go live. Parents start finding you.</li>
+      </ol>
+    </div>
+
+    <div class="cta-buttons">
+      <a href="tel:[SALES_PHONE]" class="cta-btn call">
+        <i class="fa-solid fa-phone" aria-hidden="true"></i> Call Us Now
+      </a>
+      <a href="https://wa.me/[SALES_WHATSAPP]" class="cta-btn wa" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp Us
+      </a>
+    </div>
+
+    <p class="deck-footer">
+      Prepared by <strong>[YOUR COMPANY NAME]</strong> &nbsp;|&nbsp; [WEBSITE] &nbsp;|&nbsp; [EMAIL]
+      <span class="replace-note">Replace [SALES_PHONE], [SALES_WHATSAPP], [YOUR COMPANY NAME], [WEBSITE], and [EMAIL] before sharing this deck.</span>
+    </p>
+
+  </section>
+
+  <!-- ============================================================
+       JAVASCRIPT — SLIDE NAVIGATION
+  ============================================================ -->
+  <script>
+    (function () {
+      const TOTAL_SLIDES = 9;
+      const slides       = Array.from(document.querySelectorAll('.slide[data-slide]'));
+      const btnPrev      = document.getElementById('btn-prev');
+      const btnNext      = document.getElementById('btn-next');
+      const counter      = document.getElementById('slide-counter');
+      let   currentSlide = 1;
+
+      /* ----------------------------------------------------------
+         Update the nav counter and button states
+      ---------------------------------------------------------- */
+      function updateNav(n) {
+        currentSlide     = n;
+        counter.textContent = 'Slide ' + n + ' of ' + TOTAL_SLIDES;
+        btnPrev.disabled = n <= 1;
+        btnNext.disabled = n >= TOTAL_SLIDES;
+      }
+
+      /* ----------------------------------------------------------
+         Scroll to a slide by 1-based index
+      ---------------------------------------------------------- */
+      function scrollToSlide(n) {
+        const target = slides.find(s => parseInt(s.dataset.slide, 10) === n);
+        if (!target) return;
+        const navHeight = document.querySelector('.slide-nav').offsetHeight || 60;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 12;
+        window.scrollTo({ top, behavior: 'smooth' });
+        updateNav(n);
+      }
+
+      /* ----------------------------------------------------------
+         Button handlers
+      ---------------------------------------------------------- */
+      btnPrev.addEventListener('click', function () {
+        if (currentSlide > 1) scrollToSlide(currentSlide - 1);
+      });
+
+      btnNext.addEventListener('click', function () {
+        if (currentSlide < TOTAL_SLIDES) scrollToSlide(currentSlide + 1);
+      });
+
+      /* ----------------------------------------------------------
+         IntersectionObserver — track which slide is most visible
+      ---------------------------------------------------------- */
+      const observer = new IntersectionObserver(function (entries) {
+        let best = null;
+        let bestRatio = 0;
+        entries.forEach(function (entry) {
+          if (entry.intersectionRatio > bestRatio) {
+            bestRatio = entry.intersectionRatio;
+            best = entry.target;
+          }
+        });
+        if (best) {
+          const n = parseInt(best.dataset.slide, 10);
+          if (!isNaN(n) && n !== currentSlide) updateNav(n);
+        }
+      }, {
+        threshold: [0.15, 0.35, 0.55, 0.75],
+        rootMargin: '-60px 0px 0px 0px'
+      });
+
+      slides.forEach(function (slide) { observer.observe(slide); });
+
+      /* Initial state */
+      updateNav(1);
+    }());
+  </script>
+
+</body>
+</html>
